@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     async function getUsers() {
       try {
-        const data = await fetch("http://localhost:5000/users");
+        const data = await fetch("https://server-ui-jgi6.onrender.com/users");
         const users = await data.json();
         setUsers(users);
         console.log(users);
