@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import path from "path";
 
 // Load environment variables
 dotenv.config();
@@ -63,6 +64,16 @@ app.get("/users", async (req, res) => {
     res.status(500).json({ message: "Server error", error });
   }
 });
+
+//deployment: Deploy
+
+if (process.env.NODE_ENV === "production") {
+  const dirPath = path.resolve();
+  app.use(express.static("./users-list/dist"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(dirPath, "./users-list/dist", "index.html"));
+  });
+}
 
 // Start Server
 const PORT = process.env.PORT || 5000;

@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon index.js"
+    "start": "nodemon index.js",
+    "dev": "nodemon index.js",
+    "build": "npm install && npm install --prefix users-list && npm run build --prefix users-list"
   },
   "keywords": [],
   "author": "",
